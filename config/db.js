@@ -2,9 +2,10 @@ const mysql = require('mysql2');
 
 const dbConfig = {
     host: 'localhost',
-    user: 'tu_usuario', // Cambia 'tu_usuario' por tu nombre de usuario de MySQL
-    password: 'tu_contraseña', // Cambia 'tu_contraseña' por tu contraseña de MySQL
-    database: 'TallerMecanico'
+    user: 'root', // Cambia 'tu_usuario' por tu nombre de usuario de MySQL
+    password: '', // Cambia 'tu_contraseña' por tu contraseña de MySQL
+    database: 'information_schema',
+    port:3306
 };
 
 // Crear conexión a la base de datos
