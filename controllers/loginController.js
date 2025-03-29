@@ -2,7 +2,7 @@ const { sql, poolPromise } = require('../config/db');
 // const bcrypt = require('bcrypt');
 
 const login = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, contrasena } = req.body;
 
     try {
         const pool = await poolPromise;
@@ -18,7 +18,7 @@ const login = async (req, res) => {
 
         // Compara la contraseña con la almacenada
         // const isMatch = await bcrypt.compare(password, user.contrasena);
-        if (password !== user.contrasena) {
+        if (contrasena !== user.contrasena) {
             return res.status(401).json({ message: 'Contraseña incorrecta' });
         }
 
