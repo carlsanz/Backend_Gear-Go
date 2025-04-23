@@ -2,8 +2,8 @@ const sql = require('mssql');
 
 const dbConfig = {
     user: 'sa',
-    password: 'Libra.1999',
-    server: 'DESKTOP-8BB5PER',
+    password: 'Man7equ!lla',
+    server: 'DESKTOP-P8RVH97',
     database: 'GearGo',
     options: {
         encrypt: true,
