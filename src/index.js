@@ -39,7 +39,7 @@ app.use('/notificaciones', notificacionesRoutes);
 
 app.use('/pagos/tarjeta', pagoTarjetaRoutes);
 
-app.use('/herramientas', HerramientasRoutes);
+app.use('/herramientas', herramientasRoutes);
 
 app.use('/usuarios', UsuarioRoute);
 
