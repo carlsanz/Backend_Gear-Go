@@ -3,7 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const loginRoutes = require('../routes/loginRoute'); 
 const homeRoute = require('../routes/HomeRoute'); 
-
+const HerramientasRoute = require('../routes/HerramientasRoute');
+const UsuarioRoute = require('../routes/UsuarioRoute');
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,10 @@ app.use('/toolbox', toolBoxRoutes);
 app.use('/alquiler', alquileresRoutes); 
 
 app.use('/notificaciones', notificacionesRoutes);
+
+app.use('/herramientas', HerramientasRoute);
+
+app.use('/usuarios', UsuarioRoute);
 
 
 app.get('/', (req, res) => {
