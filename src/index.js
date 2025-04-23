@@ -3,6 +3,15 @@ const express = require('express');
 const cors = require('cors');
 const loginRoutes = require('../routes/loginRoute'); 
 const homeRoute = require('../routes/HomeRoute'); 
+const RegistroRoute = require('../routes/RegistroRoute');
+const toolBoxRoutes = require('../routes/ToolBoxRoute');
+const alquileresRoutes = require('../routes/AlquileresRoute');
+const notificacionesRoutes = require('../routes/NotificacionesRoute');
+const herramientasRoutes = require('../routes/HerramientasRoute');
+const pagoTarjetaRoutes = require('../routes/pagoTarjetaRoutes');
+
+
+
 
 
 const app = express();
@@ -17,11 +26,16 @@ app.use('/api/home', (req, res, next) => {
 
 app.use('/usuario', RegistroRoute);
 
+
+
 app.use('/toolbox', toolBoxRoutes);
 
 app.use('/alquiler', alquileresRoutes); 
 
 app.use('/notificaciones', notificacionesRoutes);
+
+app.use('/api/herramientas', herramientasRoutes);
+app.use('/pagos/tarjeta', pagoTarjetaRoutes);
 
 
 app.get('/', (req, res) => {
