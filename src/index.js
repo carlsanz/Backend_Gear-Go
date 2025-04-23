@@ -9,6 +9,7 @@ const alquileresRoutes = require('../routes/AlquileresRoute');
 const notificacionesRoutes = require('../routes/NotificacionesRoute');
 const herramientasRoutes = require('../routes/HerramientasRoute');
 const pagoTarjetaRoutes = require('../routes/pagoTarjetaRoutes');
+const UsuarioRoute = require('../routes/UsuarioRoute');
 
 
 
@@ -28,14 +29,20 @@ app.use('/usuario', RegistroRoute);
 
 
 
+
 app.use('/toolbox', toolBoxRoutes);
 
 app.use('/alquiler', alquileresRoutes); 
 
 app.use('/notificaciones', notificacionesRoutes);
 
-app.use('/api/herramientas', herramientasRoutes);
+
 app.use('/pagos/tarjeta', pagoTarjetaRoutes);
+
+app.use('/herramientas', HerramientasRoutes);
+
+app.use('/usuarios', UsuarioRoute);
+
 
 
 app.get('/', (req, res) => {

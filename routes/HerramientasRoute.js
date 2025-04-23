@@ -1,11 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const herramientasController = require('../controllers/HerramientasController');
+const { getHerramientasAdmin, updateHerramienta, eliminarHerramienta} = require ('../controllers/HerramientasController');
+const cors = require('cors');
 
-const storage = multer.memoryStorage(); // Puedes cambiar a diskStorage si deseas guardar archivos localmente
-const upload = multer({ storage: storage });
+const app = express();
 
-router.post('/nueva', upload.array('imagenes', 2), herramientasController.crearHerramienta);
+app.use(cors());
+
+//ruta para obtener las herramientas no aprobadas
+router.get('/herramientasAdmin', getHerramientasAdmin);
+
+//ruta para actualizar la herramienta como aprobada
+router.put('/aprobar/:id_herramienta', updateHerramienta);
+
+//ruta para eliminar o denegar una herramienta sera eliminada 
+router.delete('/eliminar/:id_herramienta', eliminarHerramienta)
 
 module.exports = router;
+
