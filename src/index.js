@@ -3,13 +3,22 @@ const express = require('express');
 const cors = require('cors');
 const loginRoutes = require('../routes/loginRoute'); 
 const homeRoute = require('../routes/HomeRoute'); 
-const HerramientasRoute = require('../routes/HerramientasRoute');
+const RegistroRoute = require('../routes/RegistroRoute');
+const toolBoxRoutes = require('../routes/ToolBoxRoute');
+const alquileresRoutes = require('../routes/AlquileresRoute');
+const notificacionesRoutes = require('../routes/NotificacionesRoute');
+const herramientasRoutes = require('../routes/HerramientasRoute');
+const pagoTarjetaRoutes = require('../routes/pagoTarjetaRoutes');
 const UsuarioRoute = require('../routes/UsuarioRoute');
 const RegistroRoute = require('../routes/RegistroRoute');
 const toolBoxRoutes = require('../routes/ToolBoxRoute');
 const alquileresRoutes = require('../routes/AlquileresRoute');
 const notificacionesRoutes = require('../routes/NotificacionesRoute');
 const PagosRoutes = require('../routes/PagosRoute');
+
+
+
+
 
 
 
@@ -25,17 +34,24 @@ app.use('/api/home', (req, res, next) => {
 
 app.use('/usuario', RegistroRoute);
 
+
+
+
 app.use('/toolbox', toolBoxRoutes);
 
 app.use('/alquiler', alquileresRoutes); 
 
 app.use('/notificaciones', notificacionesRoutes);
 
-app.use('/herramientas', HerramientasRoute);
+
+app.use('/pagos/tarjeta', pagoTarjetaRoutes);
+
+app.use('/herramientas', herramientasRoutes);
 
 app.use('/usuarios', UsuarioRoute);
 
 app.use('/pagos', PagosRoutes);
+
 
 
 app.get('/', (req, res) => {
