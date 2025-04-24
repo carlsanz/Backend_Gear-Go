@@ -29,7 +29,7 @@ const getHerramientas = async (req, res) => {
 
         const herramientas = result.recordset.map((herramienta) => ({
             ...herramienta,
-            image: herramienta.imagen ? `http://192.168.1.10:5000${herramienta.imagen}` : null, // Agrega el dominio base
+            image: herramienta.imagen ? `http://192.168.101.1:5000${herramienta.imagen}` : null, // Agrega el dominio base
         }));
         res.json(herramientas);
     } catch (error) {
