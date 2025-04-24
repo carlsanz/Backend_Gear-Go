@@ -13,7 +13,7 @@ const getHerramientas = async (req, res) => {
                     H.precio_por_dia,
                     IH.imagen, 
                     H.id_propietario,
-					U.Nombre AS Propietario
+                    U.Nombre AS Propietario
                 FROM 
                     Herramientas H
                 LEFT JOIN (
@@ -23,13 +23,17 @@ const getHerramientas = async (req, res) => {
                         ROW_NUMBER() OVER (PARTITION BY id_herramienta ORDER BY id_imagen ASC) AS row_num
                     FROM Imagenes_Herramientas
                 ) IH ON H.id_herramienta = IH.id_herramienta AND IH.row_num = 1
-				LEFT JOIN (SELECT 
-				id_usuario, Nombre FROM Usuarios) U ON H.id_propietario= U.id_usuario
+                LEFT JOIN (
+                    SELECT 
+                        id_usuario, 
+                        Nombre 
+                    FROM Usuarios
+                ) U ON H.id_propietario = U.id_usuario
             `);
 
         const herramientas = result.recordset.map((herramienta) => ({
             ...herramienta,
-            image: herramienta.imagen ? `http://192.168.101.1:5000${herramienta.imagen}` : null, // Agrega el dominio base
+            image: herramienta.imagen ? `http://192.168.1.10:5000${herramienta.imagen}` : null, // Agrega el dominio base
         }));
         res.json(herramientas);
     } catch (error) {

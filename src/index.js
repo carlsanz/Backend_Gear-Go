@@ -11,10 +11,7 @@ const notificacionesRoutes = require('../routes/NotificacionesRoute');
 const herramientasRoutes = require('../routes/HerramientasRoute');
 const pagoTarjetaRoutes = require('../routes/pagoTarjetaRoutes');
 const UsuarioRoute = require('../routes/UsuarioRoute');
-const RegistroRoute = require('../routes/RegistroRoute');
-const toolBoxRoutes = require('../routes/ToolBoxRoute');
-const alquileresRoutes = require('../routes/AlquileresRoute');
-const notificacionesRoutes = require('../routes/NotificacionesRoute');
+
 const PagosRoutes = require('../routes/PagosRoute');
 
 

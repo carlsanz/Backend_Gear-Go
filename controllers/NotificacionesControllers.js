@@ -7,7 +7,7 @@ const crearNotificacion = async (req, res) => {
 
         const { alquiler_id, sender_id, receiver_id, tipo_notificacion, contenido, estado } = req.body;
 
-        const pool = await poolPromise; // Obtén el objeto pool desde poolPromise
+        const pool = await poolPromise;
 
         await pool.request()
             .input('alquiler_id', sql.Int, alquiler_id)
@@ -46,6 +46,7 @@ const obtenerNotificacionesPorUsuario = async (req, res) => {
                     n.fecha AS createdAt,
                     n.estado AS status,
                     u.nombre AS sender, 
+                    n.sender_id,
                     h.nombre AS toolName, 
                     a.total_dias AS totalDays, 
                     a.precio_total AS totalPrice 
