@@ -5,27 +5,24 @@ const login = async (req, res) => {
     const { email, contrasena } = req.body;
 
     try {
-        const pool = await poolPromise;
+        const pool = await poolPromise; // Obtén la conexión al pool
         const result = await pool.request()
             .input('email', sql.VarChar, email)
-            .query('SELECT * FROM Usuarios WHERE email = @email');
+            .input('contrasena', sql.VarChar, contrasena)
+            .query(`
+                SELECT id_usuario AS id, Nombre AS name, email
+                FROM Usuarios
+                WHERE email = @email AND contrasena = @contrasena
+            `);
 
-        if (result.recordset.length === 0) {
-            return res.status(401).json({ message: 'Usuario no encontrado' });
+        if (result.recordset.length > 0) {
+            res.status(200).json(result.recordset[0]); // Devuelve el usuario encontrado
+        } else {
+            res.status(401).json({ message: "Usuario o contraseña incorrectos" });
         }
-
-        const user = result.recordset[0];
-
-        // Compara la contraseña con la almacenada
-        // const isMatch = await bcrypt.compare(password, user.contrasena);
-        if (contrasena !== user.contrasena) {
-            return res.status(401).json({ message: 'Contraseña incorrecta' });
-        }
-
-        res.json({ message: 'Login exitoso' });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error en el servidor' });
+        console.error("Error al iniciar sesión:", error);
+        res.status(500).json({ message: "Error del servidor" });
     }
 };
 

@@ -2,12 +2,15 @@
 
 const express = require('express');
 const router = express.Router();
-const ToolBoxController = require('../controllers/ToolBoxController');
+const { getToolBoxItems, createToolBoxItem, getRentedTools } = require('../controllers/ToolBoxController');
 
+// Ruta para obtener herramientas disponibles
+router.get('/:id_propietario', getToolBoxItems);
 
-router.get('/:id_usuario', ToolBoxController.getToolBoxItems);
+// Ruta para obtener herramientas en renta
+router.get('/renta/:id_propietario', getRentedTools);
 
-
-router.post('/', ToolBoxController.createToolBoxItem);
+// Ruta para crear una herramienta
+router.post('/crear', createToolBoxItem);
 
 module.exports = router;
