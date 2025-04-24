@@ -5,6 +5,13 @@ const loginRoutes = require('../routes/loginRoute');
 const homeRoute = require('../routes/HomeRoute'); 
 const HerramientasRoute = require('../routes/HerramientasRoute');
 const UsuarioRoute = require('../routes/UsuarioRoute');
+const RegistroRoute = require('../routes/RegistroRoute');
+const toolBoxRoutes = require('../routes/ToolBoxRoute');
+const alquileresRoutes = require('../routes/AlquileresRoute');
+const notificacionesRoutes = require('../routes/NotificacionesRoute');
+const PagosRoutes = require('../routes/PagosRoute');
+
+
 
 const app = express();
 app.use(express.json());
@@ -27,6 +34,8 @@ app.use('/notificaciones', notificacionesRoutes);
 app.use('/herramientas', HerramientasRoute);
 
 app.use('/usuarios', UsuarioRoute);
+
+app.use('/pagos', PagosRoutes);
 
 
 app.get('/', (req, res) => {
